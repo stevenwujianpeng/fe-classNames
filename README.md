@@ -44,3 +44,31 @@ class ComponentA extends React.Component {
     }
 }
 ```
+
+# Test Coverage
+
+```
+ PASS  test/index.test.js
+  classNames
+    ✓ 所有数据类型 (5ms)
+    ✓ 去重
+    ✓ React (1ms)
+
+ PASS  test/util.test.js
+  判断标识符
+    ✓ 有效的 startWith - _ a-z A-Z (4ms)
+    ✓ 无效的以数字开头的 (1ms)
+    ✓ 无效的输入 (2ms)
+
+----------|----------|----------|----------|----------|-------------------|
+File      |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
+----------|----------|----------|----------|----------|-------------------|
+All files |      100 |    95.24 |      100 |      100 |                   |
+ index.js |      100 |    94.74 |      100 |      100 |                19 |
+ util.js  |      100 |      100 |      100 |      100 |                   |
+----------|----------|----------|----------|----------|-------------------|
+Test Suites: 2 passed, 2 total
+Tests:       6 passed, 6 total
+
+```
+
