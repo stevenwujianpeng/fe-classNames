@@ -15,6 +15,7 @@
 > Inspired by [JedWatson/classnames](https://github.com/JedWatson/classnames)
 
 # Feature
+- 合并 对象，字符串，数组中的有效类名
 - 类名的有效性校验（去掉数字开头的类名）
 - 去掉重复的类名
 
