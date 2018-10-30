@@ -8,7 +8,7 @@
     "test": "jest",
     "test:report": "jest --coverage",
     "lint": "./node_modules/.bin/eslint src",
-    "build": "rollup -c"
+    "build": "npm run test && rollup -c"
   },
   "repository": {
     "type": "git",
@@ -43,6 +43,8 @@
   "jest": {
     "transform": {
       "^.+\\.jsx?$": "babel-jest"
-    }
+    },
+    "verbose": true,
+    "silent": true
   }
 }

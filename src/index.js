@@ -7,6 +7,7 @@ const classNames = (...args) => {
     let arg = args[i];
 
     if (!arg) continue;
+    if (classes.indexOf(arg) > -1) continue;
 
     let argType = typeof arg;
 
@@ -20,16 +21,14 @@ const classNames = (...args) => {
       }
     } else if (argType === 'object') {
       for (let key in arg) {
-        if (Object.prototype.hasOwnProperty.call(arg, key) && arg[key]) {
+        if (Object.prototype.hasOwnProperty.call(arg, key) && arg[key] && classes.indexOf(key) === -1) {
           classes.push(key);
         }
       }
     }
   }
 
-  const classSet = new Set(classes);
-
-  return [...classSet].join(' ');
+  return classes.join(' ');
 };
 
 export default classNames;
