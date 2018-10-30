@@ -30,7 +30,7 @@ yarn:
 ```javascript
 import classNames from 'fe-classnames';
 
-class ComponentA extends React.Componenet {
+class ComponentA extends React.Component {
     
     render () {
         const cls = classNames('btn', {
