@@ -1,14 +1,14 @@
 {
   "name": "fe-classnames",
   "version": "1.2.2",
-  "description": "简化Reac中的 className的操作",
+  "description": "简化React中的className的操作",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register",
-    "test:report": "nyc --reporter=text mocha --compilers js:babel-core/register",
-    "lint": "./node_modules/.bin/eslint --fix src",
-    "build": "npm run test && rollup -c"
+    "test": "BABEL_ENV=test mocha --compilers js:babel-core/register",
+    "test:report": "BABEL_ENV=test nyc --reporter=text mocha --compilers js:babel-core/register",
+    "lint": "eslint --fix src",
+    "build": "BABEL_ENV=production npm run test && rollup -c"
   },
   "repository": {
     "type": "git",
@@ -29,33 +29,12 @@
   },
   "homepage": "https://github.com/stevenwujianpeng/fe-classNames#readme",
   "dependencies": {
-    "@babel/core": "^7.1.2",
-    "babel-polyfill": "^6.26.0",
-    "babel-runtime": "^6.26.0"
+    "babel-polyfill": "^6.26.0"
   },
   "devDependencies": {
-    "babel": "^6.23.0",
-    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
-    "babel-eslint": "^10.0.1",
-    "babel-jest": "^23.6.0",
-    "babel-plugin-external-helpers": "^6.22.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.7.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-latest": "^6.24.1",
-    "babel-register": "^6.26.0",
     "chai": "^4.2.0",
-    "eslint": "^5.8.0",
-    "istanbul": "^0.4.5",
-    "jest": "^23.6.0",
-    "mocha": "^5.2.0",
-    "nyc": "^13.1.0",
-    "regenerator-runtime": "^0.12.1",
-    "rollup": "^0.66.6",
-    "rollup-plugin-babel": "^4.0.3",
-    "rollup-plugin-istanbul": "^2.0.1",
-    "rollup-plugin-node-resolve": "^3.4.0",
-    "rollup-watch": "^4.3.1"
+    "mocha": "^5.2.0"
   }
 }
