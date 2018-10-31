@@ -1,4 +1,5 @@
-import { isValidIdentifier } from "./util";
+import {isValidIdentifier} from "./util/identifier";
+import {isArray} from './util/array';
 
 const classNames = (...args) => {
   const classes = [];
@@ -13,7 +14,7 @@ const classNames = (...args) => {
 
     if (argType === 'string' && isValidIdentifier(arg)) {
       classes.push(arg);
-    } else if (Array.isArray(arg)) {
+    } else if (isArray(arg)) {
       let inner = classNames(...arg);
 
       if (inner) {

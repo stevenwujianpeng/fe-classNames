@@ -1,26 +1,15 @@
+// rollup.config.js
+import resolve from 'rollup-plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
-import babelrc from 'babelrc-rollup';
-
-let pkg = require('./package.json');
-let external = Object.keys(pkg.dependencies);
-
-let plugins = [
-  babel(babelrc()),
-];
 
 export default {
   entry: 'src/index.js',
-  plugins: plugins,
-  external: external,
-  targets: [
-    {
-      dest: pkg.main,
-      format: 'umd',
-      moduleName: 'fe-classNames',
-    },
-    {
-      dest: pkg.module,
-      format: 'es',
-    }
-  ]
+  format: 'cjs',
+  plugins: [
+    resolve(),
+    babel({
+      exclude: 'node_modules/**' // 仅仅转译我们的源码
+    })
+  ],
+  dest: 'bundle.js'
 };

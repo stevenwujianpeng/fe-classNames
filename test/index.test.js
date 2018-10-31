@@ -1,15 +1,19 @@
+import 'babel-polyfill'
+import chai from 'chai';
 import classNames from '../src/index';
 
+let expect = chai.expect;
+
 describe('classNames', () => {
-  test('所有数据类型', () => {
-    expect(classNames(undefined, null, 'classA', 1, 0, {classB: true}, ['classC'])).toBe('classA classB classC');
+  it('所有数据类型', () => {
+    expect(classNames(undefined, null, 'classA', 1, 0, {classB: true}, ['classC'])).to.be.equal('classA classB classC');
   });
 
-  test('去重', () => {
-    expect(classNames('a', 'a', {'b': true}, ['c', 'c'])).toBe('a b c');
+  it('去重', () => {
+    expect(classNames('a', 'a', {'b': true}, ['c', 'c'])).to.be.equal('a b c');
   });
 
-  test('React', () => {
+  it('React', () => {
     expect(classNames({
       btn: true,
       'btn-a': false,
@@ -18,6 +22,6 @@ describe('classNames', () => {
       'btn-d': 100,
       'btn-e': {},
       'btn-f': [1231],
-    })).toBe('btn btn-b btn-c btn-d btn-e btn-f');
+    })).to.be.equal('btn btn-b btn-c btn-d btn-e btn-f');
   });
 });
