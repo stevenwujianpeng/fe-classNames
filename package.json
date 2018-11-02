@@ -5,10 +5,25 @@
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "scripts": {
-    "test": "BABEL_ENV=test mocha --compilers js:babel-core/register",
-    "test:report": "BABEL_ENV=test nyc --reporter=text mocha --compilers js:babel-core/register",
-    "lint": "eslint --fix src",
-    "build": "BABEL_ENV=production npm run test && rollup -c"
+    "clean": "rimraf ./dist",
+    "test": "cross-env NODE_ENV=test mocha --compilers js:@babel/register",
+    "lint": "eslint src/*.js",
+    "test:report": "nyc --reporter=text mocha --compilers js:@babel/register",
+    "precommit": "lint-staged",
+    "build": "npm run clean && npm run test && cross-env NODE_ENV=production rollup -c",
+    "babel": "cross-env NODE_ENV=production babel src --out-dir lib"
+  },
+  "lint-staged": {
+    "ignore": [
+      "dist/*",
+      "node_module/*"
+    ],
+    "linters": {
+      "src/**/*.js": [
+        "eslint --fix",
+        "git add"
+      ]
+    }
   },
   "repository": {
     "type": "git",
@@ -29,12 +44,28 @@
   },
   "homepage": "https://github.com/stevenwujianpeng/fe-classNames#readme",
   "dependencies": {
-    "babel-polyfill": "^6.26.0"
+    "@babel/runtime-corejs2": "^7.1.2"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-preset-env": "^1.7.0",
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/node": "^7.0.0",
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/register": "^7.0.0",
+    "assert": "^1.4.1",
     "chai": "^4.2.0",
-    "mocha": "^5.2.0"
+    "cross-env": "^5.2.0",
+    "eslint": "^5.8.0",
+    "husky": "^1.1.3",
+    "lint-staged": "^8.0.4",
+    "mocha": "^5.2.0",
+    "nyc": "^13.1.0",
+    "precommit": "^1.2.2",
+    "rimraf": "^2.6.2",
+    "rollup-plugin-babel": "^4.0.3",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-node-resolve": "^3.4.0"
   }
 }

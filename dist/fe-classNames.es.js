@@ -1,8 +1,5 @@
-(function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-	typeof define === 'function' && define.amd ? define(factory) :
-	(global['fe-classNames'] = factory());
-}(this, (function () { 'use strict';
+import _toConsumableArray from '@babel/runtime/helpers/toConsumableArray';
+import _typeof from '@babel/runtime/helpers/typeof';
 
 /**
  * 判断标识符是否有效
@@ -16,102 +13,29 @@
  * */
 var isValidIdentifier = function isValidIdentifier(identifier) {
   if (typeof identifier !== 'string') return false;
-
   var prefix = identifier.substr(0, 1);
   var numberStartRegx = /^[0-9]/;
-
   return !numberStartRegx.test(prefix);
 };
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
-  return typeof obj;
-} : function (obj) {
-  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var toConsumableArray = function (arr) {
-  if (Array.isArray(arr)) {
-    for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
-
-    return arr2;
-  } else {
-    return Array.from(arr);
-  }
+var isArray = function isArray(arg) {
+  return Object.prototype.toString.call(arg) === '[object Array]';
 };
 
 var classNames = function classNames() {
-  for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-    args[_key] = arguments[_key];
-  }
-
   var classes = [];
 
-  for (var i = 0; i < args.length; i++) {
-    var arg = args[i];
-
+  for (var i = 0; i < arguments.length; i++) {
+    var arg = i < 0 || arguments.length <= i ? undefined : arguments[i];
     if (!arg) continue;
     if (classes.indexOf(arg) > -1) continue;
 
-    var argType = typeof arg === 'undefined' ? 'undefined' : _typeof(arg);
+    var argType = _typeof(arg);
 
     if (argType === 'string' && isValidIdentifier(arg)) {
       classes.push(arg);
-    } else if (Array.isArray(arg)) {
-      var inner = classNames.apply(undefined, toConsumableArray(arg));
+    } else if (isArray(arg)) {
+      var inner = classNames.apply(void 0, _toConsumableArray(arg));
 
       if (inner) {
         classes.push(inner);
@@ -128,6 +52,4 @@ var classNames = function classNames() {
   return classes.join(' ');
 };
 
-return classNames;
-
-})));
+export default classNames;
