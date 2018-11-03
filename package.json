@@ -1,6 +1,6 @@
 {
   "name": "fe-classnames",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "简化React中的className的操作",
   "main": "dist/fe-classNames.cjs.js",
   "module": "dist/fe-classNames.es.js",
